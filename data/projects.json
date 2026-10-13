@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "simone",
+    "title": "Simone",
+    "tag": "Full-Stack Web",
+    "year": "2026",
+    "summary": "Web Pembuatan Perizinan Operasional",
+    "description": "Simone adalah sistem web komprehensif yang dirancang untuk mempermudah pengajuan pembuatan perizinan yang diperlukan dilingkungan pertambangan dan workshop serta membantu para petinggi dalam manajemen perizinan",
+    "role": "Lead Full-Stack Developer",
+    "duration": "2 Bulan",
+    "features": [
+      "Pembuatan Mine Permit, Simper, serta Permit to Work dalam 1 environment",
+      "Monitoring masa berlaku SIMPER & Mine Permit",
+      "Mempermudah approval untuk para pejabat kantor yang dapat dilakukan dimana saja"
+    ],
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Supabase"],
+    "screenshots": [
+      {
+        "url": "/projects/simone-preview-1.svg",
+        "caption": "Dashboard Utama & Tinjauan Metrik Finansial"
+      },
+      {
+        "url": "/projects/simone-preview-2.svg",
+        "caption": "Tabel Manajemen Stok & Pemantauan Logistik"
+      },
+      {
+        "url": "/projects/simone-preview-3.svg",
+        "caption": "Laporan Analitik Tren & Grafik Pertumbuhan"
+      }
+    ]
+  },
+  {
+    "slug": "digimon",
+    "title": "Digimon",
+    "tag": "Full-Stack Web",
+    "year": "2026",
+    "summary": "Pengajuan Izin Kerja ke Customer",
+    "description": "Digimon adalah sebuah sisem yang dimana user dapat mengajukan izin kerja ke customer secara cepat dan mudah",
+    "role": "Full-Stack Developer",
+    "duration": "1.5 Bulan",
+    "features": [
+      "Pengajuan berbasis online yang dapat dilakukan dimana saja",
+      "File pengajuan dapat di kirim langsung ke customer",
+      "Dapat melihat history pengajuan izin kerja"
+    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    "screenshots": [
+      {
+        "url": "/projects/digimon-preview-1.svg",
+        "caption": "Tampilan Koleksi & Katalog Interaktif"
+      },
+      {
+        "url": "/projects/digimon-preview-2.svg",
+        "caption": "Detail Karakter & Visualisasi Statistik Radar"
+      }
+    ]
+  },
+  {
+    "slug": "move-app",
+    "title": "MOVE APP",
+    "tag": "Full-Stack Mobile",
+    "year": "2026",
+    "summary": "Aplikasi Manajemen Keuangan",
+    "description": "MOVE APP adalah aplikasi yang dibuat untuk memudahkan user untuk memantau/mengelola data keuangan perusahaan tanpa harus membuka laptop",
+    "role": "Mobile Developer",
+    "duration": "4 Bulan",
+    "features": [
+      "Terhubung menggunakan AppScript agar bisa di manage di 2 device sekaligus",
+      "Dapat memantau/mengelola dimanapun dan kapanpun tanpa harus membuka laptop"
+    ],
+    "technologies": ["Jetpack Compose", "AppScript"],
+    "screenshots": [
+      {
+        "url": "/projects/move-preview-1.svg",
+        "caption": "Antarmuka Navigasi Rute & Peta Live"
+      },
+      {
+        "url": "/projects/move-preview-2.svg",
+        "caption": "Layar Pemesanan Tiket & Saldo E-Wallet"
+      }
+    ]
+  },
+  {
+    "slug": "kinetic-atelier",
+    "title": "Kinetic Atelier",
+    "tag": "Full-Stack Web",
+    "year": "2026",
+    "summary": "Website portofolio eksperimental dan galeri interaktif dengan animasi fisika dan canvas interaktif.",
+    "description": "Kinetic Atelier adalah platform kurasi seni digital dan desain interior kontemporer. Mengedepankan tipografi elegan, interaksi kinetik berbasis fisika, serta transisi halaman mulus tanpa jeda.",
+    "role": "Creative Developer",
+    "duration": "2 Bulan",
+    "features": [
+      "Efek kinetik kanvas partikel responsif terhadap gerakan kursor",
+      "Galeri grid modular dengan lazy-loading resolusi tinggi",
+      "Sistem pemesanan karya seni dan komunikasi langsung dengan kurator",
+      "Desain adaptif dengan tema minimalis monokromatik"
+    ],
+    "technologies": ["Next.js", "Three.js / Canvas", "Tailwind CSS", "Framer Motion"],
+    "liveUrl": "https://kinetic-atelier.vercel.app",
+    "screenshots": [
+      {
+        "url": "/projects/kinetic-preview-1.svg",
+        "caption": "Beranda Eksperimental & Efek Kanvas Kinetik"
+      },
+      {
+        "url": "/projects/kinetic-preview-2.svg",
+        "caption": "Galeri Modular & Detail Koleksi Kurasi"
+      }
+    ]
+  },
+  {
+    "slug": "converter-json-to-csv",
+    "title": "Converter JSON to CSV",
+    "tag": "Full-Stack Web",
+    "year": "2026",
+    "summary": "Utilitas pemrosesan data kilat untuk konversi data bersarang JSON ke CSV/Excel dengan validasi schema.",
+    "description": "Alat bantu produktivitas bagi developer dan data analyst untuk meratakan (flatten) struktur data JSON kompleks menjadi spreadsheet CSV yang rapi. Memproses jutaan baris langsung di sisi klien dengan Web Workers tanpa mengirim data sensitif ke server.",
+    "role": "Full-Stack Developer",
+    "duration": "3 Minggu",
+    "features": [
+      "Dukungan nested JSON flattening otomatis dengan kustomisasi delimiter",
+      "Pemrosesan super cepat di browser menggunakan Web Worker",
+      "Validasi sintaks real-time & error highlighter",
+      "Pratinjau tabel interaktif dengan pagination sebelum diunduh"
+    ],
+    "technologies": ["Next.js", "TypeScript", "Web Workers", "PapaParse", "Tailwind CSS"],
+    "liveUrl": "https://json-to-csv-tool.vercel.app",
+    "screenshots": [
+      {
+        "url": "/projects/converter-preview-1.svg",
+        "caption": "Editor JSON & Opsi Konfigurasi Ekspor"
+      },
+      {
+        "url": "/projects/converter-preview-2.svg",
+        "caption": "Pratinjau Data CSV Tabular & Tombol Unduh"
+      }
+    ]
+  },
+  {
+    "slug": "tmdb-app",
+    "title": "TMDB App",
+    "tag": "Full-Stack Mobile",
+    "year": "2026",
+    "summary": "Aplikasi katalog film dan serial TV dengan rekomendasi personal, trailer streaming, dan ulasan komunitas.",
+    "description": "Aplikasi seluler pendamping hiburan yang memanfaatkan The Movie Database API. Menghadirkan antarmuka bergaya bioskop modern, bookmark watchlist offline, serta notifikasi rilis film terbaru.",
+    "role": "Mobile Developer",
+    "duration": "2.5 Bulan",
+    "features": [
+      "Katalog tren film & serial TV terkini dengan filter rating",
+      "Pemutar trailer terintegrasi dan ringkasan pemeran lengkap",
+      "Watchlist & Favorit pribadi yang dapat dibagikan",
+      "Desain antarmuka gelap modern dengan transisi fluida"
+    ],
+    "technologies": ["React Native", "Expo", "TypeScript", "TMDB REST API"],
+    "githubUrl": "https://github.com",
+    "screenshots": [
+      {
+        "url": "/projects/tmdb-preview-1.svg",
+        "caption": "Layar Beranda Film Terpopuler & Banner Trailer"
+      },
+      {
+        "url": "/projects/tmdb-preview-2.svg",
+        "caption": "Halaman Detail Film, Sinopsis, dan Daftar Pemeran"
+      }
+    ]
+  }
+]
