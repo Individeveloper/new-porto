@@ -16,16 +16,12 @@
     "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Supabase"],
     "screenshots": [
       {
-        "url": "/projects/simone-preview-1.svg",
-        "caption": "Dashboard Utama & Tinjauan Metrik Finansial"
+        "url": "/projects/simone-preview-1.PNG",
+        "caption": "Tampilan home"
       },
       {
-        "url": "/projects/simone-preview-2.svg",
-        "caption": "Tabel Manajemen Stok & Pemantauan Logistik"
-      },
-      {
-        "url": "/projects/simone-preview-3.svg",
-        "caption": "Laporan Analitik Tren & Grafik Pertumbuhan"
+        "url": "/projects/simone-preview-2.PNG",
+        "caption": "Monitoring masa berlaku SIMPER & Mine Permit"
       }
     ]
   },
@@ -46,12 +42,12 @@
     "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
     "screenshots": [
       {
-        "url": "/projects/digimon-preview-1.svg",
-        "caption": "Tampilan Koleksi & Katalog Interaktif"
+        "url": "/projects/digimon-preview-1.PNG",
+        "caption": "Halaman Awal untuk mengajukan izin kerja ke customer"
       },
       {
-        "url": "/projects/digimon-preview-2.svg",
-        "caption": "Detail Karakter & Visualisasi Statistik Radar"
+        "url": "/projects/digimon-preview-2.PNG",
+        "caption": "Halaman untuk melihat pengajuan izin kerja yang telah di ajukan"
       }
     ]
   },
@@ -63,7 +59,7 @@
     "summary": "Aplikasi Manajemen Keuangan",
     "description": "MOVE APP adalah aplikasi yang dibuat untuk memudahkan user untuk memantau/mengelola data keuangan perusahaan tanpa harus membuka laptop",
     "role": "Mobile Developer",
-    "duration": "4 Bulan",
+    "duration": "2 Minggu",
     "features": [
       "Terhubung menggunakan AppScript agar bisa di manage di 2 device sekaligus",
       "Dapat memantau/mengelola dimanapun dan kapanpun tanpa harus membuka laptop"
@@ -71,12 +67,12 @@
     "technologies": ["Jetpack Compose", "AppScript"],
     "screenshots": [
       {
-        "url": "/projects/move-preview-1.svg",
-        "caption": "Antarmuka Navigasi Rute & Peta Live"
+        "url": "/projects/move-preview-1.jpeg",
+        "caption": "Antarmuka login"
       },
       {
-        "url": "/projects/move-preview-2.svg",
-        "caption": "Layar Pemesanan Tiket & Saldo E-Wallet"
+        "url": "/projects/move-preview-2.jpeg",
+        "caption": "Tampilan home"
       }
     ]
   },
@@ -85,26 +81,19 @@
     "title": "Kinetic Atelier",
     "tag": "Full-Stack Web",
     "year": "2026",
-    "summary": "Website portofolio eksperimental dan galeri interaktif dengan animasi fisika dan canvas interaktif.",
-    "description": "Kinetic Atelier adalah platform kurasi seni digital dan desain interior kontemporer. Mengedepankan tipografi elegan, interaksi kinetik berbasis fisika, serta transisi halaman mulus tanpa jeda.",
-    "role": "Creative Developer",
-    "duration": "2 Bulan",
+    "summary": "Website convert url youtube ke audio",
+    "description": "Sebuah website convert url youtube ke audio yang dirancang untuk memudahkan para editor untuk mengekstrak audio dari video YouTube dengan cepat dan efisien. Dengan antarmuka yang bersih dan responsif, pengguna dapat mengunggah URL video, memilih format audio, dan mengunduh hasilnya dalam hitungan detik.",
+    "role": "Full-Stack Developer",
+    "duration": "2 Minggu",
     "features": [
-      "Efek kinetik kanvas partikel responsif terhadap gerakan kursor",
-      "Galeri grid modular dengan lazy-loading resolusi tinggi",
-      "Sistem pemesanan karya seni dan komunikasi langsung dengan kurator",
-      "Desain adaptif dengan tema minimalis monokromatik"
+      "Konversi URL YouTube ke format audio populer (MP3, WAV, AAC)",
+      "UI/UX yang responsif dan ramah pengguna untuk pengalaman konversi yang mulus"
     ],
-    "technologies": ["Next.js", "Three.js / Canvas", "Tailwind CSS", "Framer Motion"],
-    "liveUrl": "https://kinetic-atelier.vercel.app",
+    "technologies": ["Prisma", "React", "Tailwind CSS", "Vite"],
     "screenshots": [
       {
-        "url": "/projects/kinetic-preview-1.svg",
-        "caption": "Beranda Eksperimental & Efek Kanvas Kinetik"
-      },
-      {
-        "url": "/projects/kinetic-preview-2.svg",
-        "caption": "Galeri Modular & Detail Koleksi Kurasi"
+        "url": "/projects/kinetic-preview-1.PNG",
+        "caption": "Halaman home dengan input URL YouTube dan tombol konversi"
       }
     ]
   },
@@ -116,23 +105,19 @@
     "summary": "Utilitas pemrosesan data kilat untuk konversi data bersarang JSON ke CSV/Excel dengan validasi schema.",
     "description": "Alat bantu produktivitas bagi developer dan data analyst untuk meratakan (flatten) struktur data JSON kompleks menjadi spreadsheet CSV yang rapi. Memproses jutaan baris langsung di sisi klien dengan Web Workers tanpa mengirim data sensitif ke server.",
     "role": "Full-Stack Developer",
-    "duration": "3 Minggu",
+    "duration": "2 Minggu",
     "features": [
       "Dukungan nested JSON flattening otomatis dengan kustomisasi delimiter",
       "Pemrosesan super cepat di browser menggunakan Web Worker",
       "Validasi sintaks real-time & error highlighter",
       "Pratinjau tabel interaktif dengan pagination sebelum diunduh"
     ],
-    "technologies": ["Next.js", "TypeScript", "Web Workers", "PapaParse", "Tailwind CSS"],
-    "liveUrl": "https://json-to-csv-tool.vercel.app",
+    "url": "https://brutalist-converter.vercel.app/",
+    "technologies": ["Vite", "JavaScript", "React", "Tailwind CSS"],
     "screenshots": [
       {
-        "url": "/projects/converter-preview-1.svg",
+        "url": "/projects/converter-preview-1.PNG",
         "caption": "Editor JSON & Opsi Konfigurasi Ekspor"
-      },
-      {
-        "url": "/projects/converter-preview-2.svg",
-        "caption": "Pratinjau Data CSV Tabular & Tombol Unduh"
       }
     ]
   },
@@ -147,20 +132,17 @@
     "duration": "2.5 Bulan",
     "features": [
       "Katalog tren film & serial TV terkini dengan filter rating",
-      "Pemutar trailer terintegrasi dan ringkasan pemeran lengkap",
-      "Watchlist & Favorit pribadi yang dapat dibagikan",
-      "Desain antarmuka gelap modern dengan transisi fluida"
+      "Pemutar trailer terintegrasi dan ringkasan pemeran lengkap"
     ],
-    "technologies": ["React Native", "Expo", "TypeScript", "TMDB REST API"],
-    "githubUrl": "https://github.com",
+    "technologies": ["Jetpack Compose", "TMDB REST API"],
     "screenshots": [
       {
-        "url": "/projects/tmdb-preview-1.svg",
-        "caption": "Layar Beranda Film Terpopuler & Banner Trailer"
+        "url": "/projects/tmdb-preview-1.jpeg",
+        "caption": "Tampilan beranda dengan daftar film populer dan serial TV"
       },
       {
-        "url": "/projects/tmdb-preview-2.svg",
-        "caption": "Halaman Detail Film, Sinopsis, dan Daftar Pemeran"
+        "url": "/projects/tmdb-preview-2.jpeg",
+        "caption": "Halaman detail film"
       }
     ]
   }

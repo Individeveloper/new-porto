@@ -161,6 +161,7 @@ async function ProjectDetailContent({ params }: PageProps) {
   }
 
   const project = projects[currentIndex];
+  const isMobileProject = project.tag?.toLowerCase().includes("mobile");
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject =
     currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
@@ -265,13 +266,18 @@ async function ProjectDetailContent({ params }: PageProps) {
             </span>
           </div>
 
-          <div className="project-detail__screenshots">
+          <div
+            className={`project-detail__screenshots ${
+              isMobileProject ? "project-detail__screenshots--mobile" : ""
+            }`}
+          >
             {project.screenshots.map((shot, idx) => (
               <ProjectScreenshot
                 key={idx}
                 url={shot.url}
                 caption={shot.caption}
                 index={idx}
+                isMobile={isMobileProject ? true : undefined}
               />
             ))}
           </div>

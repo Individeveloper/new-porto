@@ -246,7 +246,7 @@ export default function Home() {
           </li>
           <li>
             <a
-              href="https://github.com"
+              href="https://github.com/Individeveloper"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -255,7 +255,7 @@ export default function Home() {
           </li>
           <li>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jayden-dwi-naufal-5a1b66294/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -382,18 +382,16 @@ export default function Home() {
           <div className="about__photo-col">
             <div className="about__photo-frame">
               <Image
-                src="/profile-placeholder.jpg"
+                src="/foto/foto-diri.jpg"
                 alt="Jayden Dwi Naufal"
                 width={320}
                 height={400}
+                unoptimized
                 className="about__photo"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
               />
-              <div className="about__photo-placeholder" aria-hidden="true">
-                JDN
-              </div>
             </div>
           </div>
         </div>
