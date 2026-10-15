@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Jayden Dwi Naufal — Portfolio",
@@ -22,7 +23,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }

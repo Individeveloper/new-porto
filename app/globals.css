@@ -40,6 +40,32 @@ body {
   animation: pageFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ── Custom Cursor ───────────────────────────────── */
+.custom-cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999999;
+}
+
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  [role="button"],
+  [role="tab"],
+  .project-item,
+  .projects__tab,
+  .skill-tag,
+  .nav__hamburger,
+  .nav__sidebar-close {
+    cursor: none !important;
+  }
+}
+
 /* ── Navigation ─────────────────────────────────── */
 .nav {
   position: fixed;
@@ -429,6 +455,74 @@ body {
   border-top: 1px solid var(--color-surface);
 }
 
+.projects__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.projects__header .section__label {
+  margin-bottom: 0;
+}
+
+.projects__tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projects__tab {
+  background: transparent;
+  border: 1px solid var(--color-surface);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  user-select: none;
+}
+
+.projects__tab:hover {
+  border-color: var(--color-fg);
+  color: var(--color-fg);
+}
+
+.projects__tab.active {
+  background-color: var(--color-fg);
+  border-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.projects__tab-count {
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.projects__tab.active .projects__tab-count {
+  opacity: 0.85;
+}
+
+@keyframes fadeInProject {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .projects__list {
   list-style: none;
   display: flex;
@@ -446,6 +540,7 @@ body {
   color: inherit;
   cursor: pointer;
   transition: padding-left 0.25s ease;
+  animation: fadeInProject 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-item:hover {
@@ -816,6 +911,12 @@ body {
   .projects,
   .contact {
     padding: 4rem 1.5rem;
+  }
+
+  .projects__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
   }
 
   .hero__cta {

@@ -112,7 +112,7 @@
       "Validasi sintaks real-time & error highlighter",
       "Pratinjau tabel interaktif dengan pagination sebelum diunduh"
     ],
-    "url": "https://brutalist-converter.vercel.app/",
+    "liveUrl": "https://brutalist-converter.vercel.app/",
     "technologies": ["Vite", "JavaScript", "React", "Tailwind CSS"],
     "screenshots": [
       {
@@ -129,7 +129,7 @@
     "summary": "Aplikasi katalog film dan serial TV dengan rekomendasi personal, trailer streaming, dan ulasan komunitas.",
     "description": "Aplikasi seluler pendamping hiburan yang memanfaatkan The Movie Database API. Menghadirkan antarmuka bergaya bioskop modern, bookmark watchlist offline, serta notifikasi rilis film terbaru.",
     "role": "Mobile Developer",
-    "duration": "2.5 Bulan",
+    "duration": "1 Minggu",
     "features": [
       "Katalog tren film & serial TV terkini dengan filter rating",
       "Pemutar trailer terintegrasi dan ringkasan pemeran lengkap"
