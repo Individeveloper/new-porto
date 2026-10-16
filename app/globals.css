@@ -1217,6 +1217,38 @@ body {
   color: var(--color-fg);
 }
 
+/* Breadcrumb */
+.project-detail__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.project-detail__breadcrumb a {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-detail__breadcrumb a:hover {
+  color: var(--color-fg);
+}
+
+.project-detail__breadcrumb-separator {
+  color: var(--color-muted);
+  opacity: 0.6;
+}
+
+.project-detail__breadcrumb-current {
+  color: var(--color-fg);
+  font-weight: 500;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .project-detail__content {

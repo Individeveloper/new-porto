@@ -1,9 +1,11 @@
 import { Suspense } from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import ProjectScreenshot from "@/components/ProjectScreenshot";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jaydendwinaufal.dev";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -22,13 +24,44 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!project) {
     return {
-      title: "Project Not Found — Individev",
+      title: "Project Not Found",
+      description: "The requested project case study could not be found.",
     };
   }
 
+  const cleanDescription = `${project.summary}. ${project.description}`.slice(0, 160);
+
   return {
-    title: `${project.title} — Individev`,
-    description: project.summary,
+    title: `${project.title} — ${project.tag}`,
+    description: cleanDescription,
+    keywords: [
+      project.title,
+      project.tag,
+      ...project.technologies,
+      "Jayden Dwi Naufal",
+      "Individev",
+      "Case Study",
+      "Portfolio Project",
+      "Full-Stack Development",
+    ],
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: `${project.title} — ${project.tag} | Jayden Dwi Naufal`,
+      description: project.summary,
+      url: `/projects/${project.slug}`,
+      siteName: "Jayden Dwi Naufal — Portfolio",
+      tags: [project.tag, ...project.technologies],
+      authors: ["Jayden Dwi Naufal"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — ${project.tag}`,
+      description: project.summary,
+      creator: "@jaydendwinaufal",
+    },
   };
 }
 
@@ -130,8 +163,8 @@ export default function ProjectDetailPage({ params }: PageProps) {
   return (
     <div className="project-detail">
       {/* Navigation */}
-      <nav className="nav">
-        <Link href="/" className="nav__logo">
+      <nav className="nav" aria-label="Main Navigation">
+        <Link href="/" className="nav__logo" aria-label="Individev Homepage">
           Individev
         </Link>
         <ul className="nav__links">
@@ -165,117 +198,232 @@ async function ProjectDetailContent({ params }: PageProps) {
   const nextProject =
     currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
+  const projectUrl = `${siteUrl}/projects/${project.slug}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Projects",
+            item: `${siteUrl}/#projects`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: project.title,
+            item: projectUrl,
+          },
+        ],
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: project.title,
+        description: project.description,
+        applicationCategory: project.tag,
+        operatingSystem: project.tag.toLowerCase().includes("mobile")
+          ? "Android, iOS"
+          : "Web Browser",
+        author: {
+          "@type": "Person",
+          name: "Jayden Dwi Naufal",
+          url: siteUrl,
+        },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        url: projectUrl,
+      },
+    ],
+  };
+
   return (
     <main className="project-detail__content">
-        {/* Header Section */}
-        <header className="project-detail__header">
-          <div className="project-detail__badge">
-            <span className="project-detail__badge-index">
-              {String(currentIndex + 1).padStart(2, "0")}
-            </span>
-            <span className="project-detail__badge-divider">/</span>
-            <span className="project-detail__badge-tag">{project.tag}</span>
-            <span className="project-detail__badge-dot">•</span>
-            <span className="project-detail__badge-year">{project.year}</span>
-          </div>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
 
-          <h1 className="project-detail__title">{project.title}</h1>
-          <p className="project-detail__summary">{project.summary}</p>
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="project-detail__breadcrumb">
+        <Link href="/">Home</Link>
+        <span className="project-detail__breadcrumb-separator" aria-hidden="true">/</span>
+        <Link href="/#projects">Projects</Link>
+        <span className="project-detail__breadcrumb-separator" aria-hidden="true">/</span>
+        <span className="project-detail__breadcrumb-current" aria-current="page">
+          {project.title}
+        </span>
+      </nav>
 
-          {/* Links Bar */}
-          <div className="project-detail__cta-row">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-detail__btn project-detail__btn--primary"
-              >
-                <span>Live Preview</span>
-                <span className="btn-arrow">↗</span>
-              </a>
-            )}
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-detail__btn project-detail__btn--secondary"
-              >
-                <span>Source Code</span>
-                <span className="btn-arrow">↗</span>
-              </a>
-            )}
-          </div>
-        </header>
+      {/* Header Section */}
+      <header className="project-detail__header">
+        <div className="project-detail__badge">
+          <span className="project-detail__badge-index">
+            {String(currentIndex + 1).padStart(2, "0")}
+          </span>
+          <span className="project-detail__badge-divider" aria-hidden="true">/</span>
+          <span className="project-detail__badge-tag">{project.tag}</span>
+          <span className="project-detail__badge-dot" aria-hidden="true">•</span>
+          <span className="project-detail__badge-year">{project.year}</span>
+        </div>
 
-        {/* Metadata Grid */}
-        <section className="project-detail__meta-grid">
-          {project.role && (
-            <div className="project-detail__meta-box">
-              <span className="meta-label">Role</span>
-              <span className="meta-value">{project.role}</span>
-            </div>
+        <h1 className="project-detail__title">{project.title}</h1>
+        <p className="project-detail__summary">{project.summary}</p>
+
+        {/* Links Bar */}
+        <div className="project-detail__cta-row">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-detail__btn project-detail__btn--primary"
+              aria-label={`View Live Preview for ${project.title} (opens in a new tab)`}
+            >
+              <span>Live Preview</span>
+              <span className="btn-arrow" aria-hidden="true">↗</span>
+            </a>
           )}
-          {project.duration && (
-            <div className="project-detail__meta-box">
-              <span className="meta-label">Timeline</span>
-              <span className="meta-value">{project.duration}</span>
-            </div>
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-detail__btn project-detail__btn--secondary"
+              aria-label={`View Source Code for ${project.title} on GitHub (opens in a new tab)`}
+            >
+              <span>Source Code</span>
+              <span className="btn-arrow" aria-hidden="true">↗</span>
+            </a>
           )}
-          <div className="project-detail__meta-box project-detail__meta-box--tech">
-            <span className="meta-label">Tech Stack</span>
-            <div className="meta-tags">
-              {project.technologies.map((tech, idx) => (
-                <span key={idx} className="meta-tag">
-                  {tech}
-                </span>
-              ))}
-            </div>
+        </div>
+      </header>
+
+      {/* Metadata Grid */}
+      <section className="project-detail__meta-grid" aria-label="Project details summary">
+        {project.role && (
+          <div className="project-detail__meta-box">
+            <span className="meta-label">Role</span>
+            <span className="meta-value">{project.role}</span>
           </div>
-        </section>
-
-        {/* Overview & Features */}
-        <section className="project-detail__section">
-          <h2 className="section__label">About the Project</h2>
-          <p className="project-detail__description">{project.description}</p>
-
-          {project.features && project.features.length > 0 && (
-            <div className="project-detail__features">
-              <h3 className="features-title">Core Highlights & Capabilities</h3>
-              <ul className="features-list">
-                {project.features.map((feature, idx) => (
-                  <li key={idx} className="features-item">
-                    <span className="feature-bullet">—</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </section>
-
-        {/* Screenshots Showcase */}
-        <section className="project-detail__section">
-          <div className="screenshots-header">
-            <h2 className="section__label">Screenshots &amp; Previews</h2>
-            <span className="screenshots-count">
-              {project.screenshots.length} Preview
-              {project.screenshots.length > 1 ? "s" : ""}
-            </span>
+        )}
+        {project.duration && (
+          <div className="project-detail__meta-box">
+            <span className="meta-label">Timeline</span>
+            <span className="meta-value">{project.duration}</span>
           </div>
-
-          <div className="project-detail__screenshots">
-            {project.screenshots.map((shot, idx) => (
-              <ProjectScreenshot
-                key={idx}
-                url={shot.url}
-                caption={shot.caption}
-                index={idx}
-              />
+        )}
+        <div className="project-detail__meta-box project-detail__meta-box--tech">
+          <span className="meta-label">Tech Stack</span>
+          <div className="meta-tags">
+            {project.technologies.map((tech, idx) => (
+              <span key={idx} className="meta-tag">
+                {tech}
+              </span>
             ))}
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+
+      {/* Overview & Features */}
+      <section className="project-detail__section" aria-labelledby="about-project-heading">
+        <h2 id="about-project-heading" className="section__label">
+          About the Project
+        </h2>
+        <p className="project-detail__description">{project.description}</p>
+
+        {project.features && project.features.length > 0 && (
+          <div className="project-detail__features">
+            <h3 className="features-title">Core Highlights & Capabilities</h3>
+            <ul className="features-list">
+              {project.features.map((feature, idx) => (
+                <li key={idx} className="features-item">
+                  <span className="feature-bullet" aria-hidden="true">—</span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
+
+      {/* Screenshots Showcase */}
+      <section className="project-detail__section" aria-labelledby="screenshots-heading">
+        <div className="screenshots-header">
+          <h2 id="screenshots-heading" className="section__label">
+            Screenshots &amp; Previews
+          </h2>
+          <span className="screenshots-count">
+            {project.screenshots.length} Preview
+            {project.screenshots.length > 1 ? "s" : ""}
+          </span>
+        </div>
+
+        <div className="project-detail__screenshots">
+          {project.screenshots.map((shot, idx) => (
+            <ProjectScreenshot
+              key={idx}
+              url={shot.url}
+              caption={shot.caption}
+              index={idx}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Pagination Footer: Links to Previous & Next Project for enhanced crawlability */}
+      <footer className="project-detail__footer" aria-label="Other Projects">
+        <div className="project-pagination">
+          {prevProject ? (
+            <Link
+              href={`/projects/${prevProject.slug}`}
+              className="pagination-card pagination-card--prev"
+              rel="prev"
+              aria-label={`Previous project: ${prevProject.title}`}
+            >
+              <span className="pagination-sub">← Previous Project</span>
+              <span className="pagination-title">{prevProject.title}</span>
+            </Link>
+          ) : (
+            <div className="pagination-spacer" aria-hidden="true" />
+          )}
+
+          {nextProject ? (
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="pagination-card pagination-card--next"
+              rel="next"
+              aria-label={`Next project: ${nextProject.title}`}
+            >
+              <span className="pagination-sub">Next Project →</span>
+              <span className="pagination-title">{nextProject.title}</span>
+            </Link>
+          ) : (
+            <div className="pagination-spacer" aria-hidden="true" />
+          )}
+        </div>
+
+        <div className="project-detail__back-center">
+          <Link href="/#projects" className="back-link">
+            ↑ Back to All Projects
+          </Link>
+        </div>
+      </footer>
+    </main>
   );
 }

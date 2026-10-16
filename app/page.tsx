@@ -20,7 +20,7 @@ const achievements = [
 ];
 
 // ── Blown alphabet effect ─────────────────────────────
-const LETTERS = "JAYDEN DWI NAUFAL GRACE AVIOLYN RIFWANSYAH".replace(/ /g, "").split("");
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".replace(/ /g, "").split("");
 
 function WindCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -162,6 +162,7 @@ export default function Home() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   useEffect(() => {
     if (menuOpen) {
@@ -212,18 +213,25 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError("");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: process.env.ACCESS_KEY,
-          ...formData,
-        }),
+        body: JSON.stringify(formData),
       });
-      if (res.ok) setSubmitted(true);
+
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        throw new Error(result.message || "Message could not be sent.");
+      }
+
+      setSubmitted(true);
     } catch (error) {
       console.error("Submission error:", error);
+      setSubmitError(
+        error instanceof Error ? error.message : "Message could not be sent."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -232,7 +240,7 @@ export default function Home() {
   return (
     <main>
       {/* Navigation */}
-      <nav className="nav">
+      <nav className="nav" aria-label="Main Navigation">
         <span className="nav__logo">Individev</span>
         <ul className="nav__links">
           <li>
@@ -249,6 +257,7 @@ export default function Home() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub Profile (opens in a new tab)"
             >
               Github
             </a>
@@ -258,6 +267,7 @@ export default function Home() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn Profile (opens in a new tab)"
             >
               LinkedIn
             </a>
@@ -348,6 +358,10 @@ export default function Home() {
           <h1 className="hero__name">
             Jayden Dwi Naufal
           </h1>
+          <p className="hero__desc">
+            Full-Stack Developer &amp; Data Scientist crafting elegant web applications,
+            scalable APIs, and intelligent data solutions.
+          </p>
         </div>
       </section>
 
@@ -382,14 +396,12 @@ export default function Home() {
           <div className="about__photo-col">
             <div className="about__photo-frame">
               <Image
-                src="/profile-placeholder.jpg"
-                alt="Jayden Dwi Naufal"
+                src="/profile-placeholder.svg"
+                alt="Jayden Dwi Naufal — Full-Stack Developer & Data Scientist"
                 width={320}
                 height={400}
                 className="about__photo"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
+                priority
               />
               <div className="about__photo-placeholder" aria-hidden="true">
                 JDN
@@ -428,7 +440,11 @@ export default function Home() {
         <ul className="projects__list">
           {projects.map((project, i) => (
             <li key={project.slug}>
-              <Link href={`/projects/${project.slug}`} className="project-item">
+              <Link
+                href={`/projects/${project.slug}`}
+                className="project-item"
+                aria-label={`View case study for ${project.title} (${project.tag})`}
+              >
                 <span className="project-item__index">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -538,21 +554,32 @@ export default function Home() {
                   "Send Message"
                 )}
               </button>
+              {submitError && <p role="alert">{submitError}</p>}
             </form>
           )}
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="footer" aria-label="Site Footer">
         <p className="footer__copy">
           &copy; 2026 Jayden Dwi Naufal. All rights reserved.
         </p>
         <div className="footer__links">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile (opens in a new tab)"
+          >
             Github
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile (opens in a new tab)"
+          >
             LinkedIn
           </a>
         </div>

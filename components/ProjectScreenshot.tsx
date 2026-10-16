@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 interface ProjectScreenshotProps {
   url: string;
@@ -22,10 +23,13 @@ export default function ProjectScreenshot({ url, caption, index }: ProjectScreen
             <span className="placeholder-hint">Simpan file gambar screenshot kamu di path di atas untuk menampilkannya di sini.</span>
           </div>
         ) : (
-          <img
+          <Image
             src={url}
-            alt={caption}
-            loading={index === 0 ? "eager" : "lazy"}
+            alt={caption || "Project preview screenshot"}
+            width={1200}
+            height={675}
+            priority={index === 0}
+            unoptimized={url.endsWith(".svg")}
             className="project-detail__screenshot-img"
             onError={() => setHasError(true)}
           />

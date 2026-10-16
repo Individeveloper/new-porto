@@ -1,0 +1,12 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#EAE4D5"/>
+  <rect x="30" y="30" width="1140" height="615" rx="12" fill="#F2F2F2" stroke="#B6B09F" stroke-width="2"/>
+  <circle cx="65" cy="65" r="8" fill="#B6B09F"/>
+  <circle cx="90" cy="65" r="8" fill="#B6B09F"/>
+  <circle cx="115" cy="65" r="8" fill="#B6B09F"/>
+  <line x1="30" y1="100" x2="1170" y2="100" stroke="#EAE4D5" stroke-width="2"/>
+  <text x="600" y="280" font-family="serif" font-size="44" font-weight="bold" fill="#000000" text-anchor="middle">MOVE APP</text>
+  <text x="600" y="335" font-family="serif" font-size="22" fill="#666666" text-anchor="middle">Antarmuka Navigasi Rute & Peta Live</text>
+  <rect x="450" y="380" width="300" height="40" rx="20" fill="#EAE4D5"/>
+  <text x="600" y="406" font-family="monospace" font-size="16" fill="#000000" text-anchor="middle">Full-Stack Mobile &bull; 2026</text>
+</svg>
