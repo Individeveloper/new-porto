@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { PT_Serif_Caption } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 const ptSerif = PT_Serif_Caption({
   weight: "400",
@@ -149,6 +150,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`min-h-full flex flex-col ${ptSerif.className}`}>
+        <CustomCursor />
         {children}
       </body>
     </html>

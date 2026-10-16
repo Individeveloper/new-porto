@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BlinkBlur } from "react-loading-indicators";
@@ -163,6 +163,17 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const categories = useMemo(() => {
+    const tags = Array.from(new Set(projects.map((p) => p.tag)));
+    return ["All", ...tags];
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projects;
+    return projects.filter((p) => p.tag === activeCategory);
+  }, [activeCategory]);
 
   useEffect(() => {
     if (menuOpen) {
@@ -254,7 +265,7 @@ export default function Home() {
           </li>
           <li>
             <a
-              href="https://github.com"
+              href="https://github.com/Individeveloper"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile (opens in a new tab)"
@@ -264,7 +275,7 @@ export default function Home() {
           </li>
           <li>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jayden-dwi-naufal-5a1b66294/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile (opens in a new tab)"
@@ -396,16 +407,14 @@ export default function Home() {
           <div className="about__photo-col">
             <div className="about__photo-frame">
               <Image
-                src="/profile-placeholder.svg"
-                alt="Jayden Dwi Naufal — Full-Stack Developer & Data Scientist"
+                src="/foto/foto-diri.jpg"
+                alt="Jayden Dwi Naufal"
                 width={320}
                 height={400}
+                unoptimized
                 className="about__photo"
                 priority
               />
-              <div className="about__photo-placeholder" aria-hidden="true">
-                JDN
-              </div>
             </div>
           </div>
         </div>
@@ -436,9 +445,38 @@ export default function Home() {
         className="projects fade-up"
         ref={addRef as React.RefCallback<HTMLElement>}
       >
-        <h2 className="section__label">Projects</h2>
+        <div className="projects__header">
+          <h2 className="section__label">Projects</h2>
+          <div
+            className="projects__tabs"
+            role="tablist"
+            aria-label="Filter project berdasarkan kategori"
+          >
+            {categories.map((category) => {
+              const count =
+                category === "All"
+                  ? projects.length
+                  : projects.filter((p) => p.tag === category).length;
+              const isActive = activeCategory === category;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`projects__tab ${isActive ? "active" : ""}`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  <span>{category}</span>
+                  <span className="projects__tab-count">{count}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <ul className="projects__list">
-          {projects.map((project, i) => (
+          {filteredProjects.map((project, i) => (
             <li key={project.slug}>
               <Link
                 href={`/projects/${project.slug}`}
@@ -563,7 +601,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="footer" aria-label="Site Footer">
         <p className="footer__copy">
-          &copy; 2026 Jayden Dwi Naufal. All rights reserved.
+          &copy; 2026 Individev. All rights reserved.
         </p>
         <div className="footer__links">
           <a

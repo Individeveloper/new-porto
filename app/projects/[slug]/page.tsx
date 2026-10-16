@@ -194,6 +194,7 @@ async function ProjectDetailContent({ params }: PageProps) {
   }
 
   const project = projects[currentIndex];
+  const isMobileProject = project.tag?.toLowerCase().includes("mobile");
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject =
     currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
@@ -385,45 +386,6 @@ async function ProjectDetailContent({ params }: PageProps) {
           ))}
         </div>
       </section>
-
-      {/* Pagination Footer: Links to Previous & Next Project for enhanced crawlability */}
-      <footer className="project-detail__footer" aria-label="Other Projects">
-        <div className="project-pagination">
-          {prevProject ? (
-            <Link
-              href={`/projects/${prevProject.slug}`}
-              className="pagination-card pagination-card--prev"
-              rel="prev"
-              aria-label={`Previous project: ${prevProject.title}`}
-            >
-              <span className="pagination-sub">← Previous Project</span>
-              <span className="pagination-title">{prevProject.title}</span>
-            </Link>
-          ) : (
-            <div className="pagination-spacer" aria-hidden="true" />
-          )}
-
-          {nextProject ? (
-            <Link
-              href={`/projects/${nextProject.slug}`}
-              className="pagination-card pagination-card--next"
-              rel="next"
-              aria-label={`Next project: ${nextProject.title}`}
-            >
-              <span className="pagination-sub">Next Project →</span>
-              <span className="pagination-title">{nextProject.title}</span>
-            </Link>
-          ) : (
-            <div className="pagination-spacer" aria-hidden="true" />
-          )}
-        </div>
-
-        <div className="project-detail__back-center">
-          <Link href="/#projects" className="back-link">
-            ↑ Back to All Projects
-          </Link>
-        </div>
-      </footer>
     </main>
   );
 }
