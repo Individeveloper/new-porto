@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BlinkBlur } from "react-loading-indicators";
+import { OrbitProgress } from "react-loading-indicators";
 import { projects } from "@/lib/projects";
 
 const achievements = [
@@ -584,11 +584,11 @@ export default function Home() {
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  <BlinkBlur
+                  <OrbitProgress
+                    variant="disc"
                     color="#000000"
-                    size="medium"
-                    text="Please Wait"
-                    textColor="#000000"
+                    dense
+                    style={{ fontSize: "3.5px" }}
                   />
                 ) : (
                   "Send Message"

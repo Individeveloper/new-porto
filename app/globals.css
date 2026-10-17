@@ -320,6 +320,9 @@ body {
   background-color: var(--color-surface);
   color: var(--color-fg);
   cursor: wait;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ── Section Label (shared) ──────────────────────── */
