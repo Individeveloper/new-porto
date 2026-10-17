@@ -20,7 +20,7 @@ const achievements = [
 ];
 
 // ── Blown alphabet effect ─────────────────────────────
-const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".replace(/ /g, "").split("");
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯابتثجحخدذرزسشصضطظعغفقكلمنهـويㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん".replace(/ /g, "").split("");
 
 function WindCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
