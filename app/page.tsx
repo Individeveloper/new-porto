@@ -402,12 +402,14 @@ export default function Home() {
               <span className="skill-tag">Python</span>
               <span className="skill-tag">ASP.Net</span>
               <span className="skill-tag">Jetpack Compose</span>
+              <span className="skill-tag">Android Studio</span>
+              <span className="skill-tag">Scikit Learn</span>
             </div>
           </div>
           <div className="about__photo-col">
             <div className="about__photo-frame">
               <Image
-                src="/foto/foto-diri.jpg"
+                src="/foto/foto-diri.jpeg"
                 alt="Jayden Dwi Naufal"
                 width={320}
                 height={400}
